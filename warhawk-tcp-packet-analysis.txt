@@ -1,0 +1,173 @@
+Packet Anaylysis for Warhawk on the PS3 completd at 10/17/2018, 9:24 PM EST.
+Environment: PS3 OFW 4.82, already ran the game up before, connecting again.
+PCAPNG: Encrypted TCP Packets on First Boot.pcapng
+
+  [DNS] Query Response: UP9000-BCUS98117-00.auth.np.ac.playstation.net → 104.88.13.207; #2
+  [SSL:HTTP] 192.168.1.4:61813 → UP9000-BCUS98117-00.auth.np.ac.playstation.net
+    Your console ID, account email, account password, ps3 SDK mode, ps3 version
+  [SSL:HTTP] 192.168.1.4:61813 ← UP9000-BCUS98117-00.auth.np.ac.playstation.net
+    Gets NP ticket issued and signed for the game Warhawk (BCUS98117) to be used for
+    signing in later. All of this happens under SSL, thus, not really shown in the
+    packets but I know it is happening on each game boot.
+  
+This is where the game starts communicating nonsense on port 10071 (#25)…
+  [DNS] Query Response: warhawk.ps3.online.scea.com → 160.33.32.131; #24
+  [TCP: SYN] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0
+  [TCP: SYN, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 0
+  [TCP: ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0
+  [TCP: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071
+    Data being sent is a SCERT certificate for Warhawk; 733 bytes in length.
+  [TCP: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 0
+  [TCP: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071
+    Data being sent is a SCERT certificate; 756 bytes in length.
+
+At this point, it starts encrypting the data between both sides despite there being no
+handshakes, chipers, or key sharing. The encrypted data all appears to follow this pattern:
+    random 8 bit; 1 byte → 16 bit (Little Endian, hex size of the *encrypted data*);
+    2 bytes → random 4 bytes (let's call this "pepper") → *encrypted data*
+
+The first 8 bit may be a "type" sort of thing, and the pepper doesn't appear to have no
+relation witht he 8 bit, thought it may be related to the *encrypted data* because when
+it is different the *encrypted data* is different as well, even if it is left the same size.
+
+I am going to call this method of bullshit encryption "GAYSSL". "gay" as in stupid, not
+as in homosexual. You are to call it that too.
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 71
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 71
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 79
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 10
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 8
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 101
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 9
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 23
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 15
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 45
+  [GAYSSL: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 0
+  [GAYSSL: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 0
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 922
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 812
+  [GAYSSL: ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0
+  [GAYSSL: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 1460
+  [GAYSSL: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 1460
+  [GAYSSL: ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 1460
+  [GAYSSL: ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0
+  [GAYSSL: ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 379
+  [GAYSSL: PSH, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 8
+  [GAYSSL: FIN, ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0; #53
+  [GAYSSL: FIN, ACK] 192.168.1.4:61814 ← 160.33.32.131:10071; length = 0; #55
+  [GAYSSL: ACK] 192.168.1.4:61814 → 160.33.32.131:10071; length = 0; #56
+
+This is where the game communicates with God knows what version of HTTP on port 10060…
+  [DNS] Query Response: warhawk-prod3.svo.online.scea.com → 160.33.32.131; #54
+  [TCP: SYN] 192.168.1.4:61815 → 160.33.32.131:10060; length = 0
+  [TCP: SYN, ACK] 192.168.1.4:61815 ← 160.33.32.131:10060; length = 0
+  [TCP: ACK] 192.168.1.4:61815 → 160.33.32.131:10060; length = 0
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.0] 192.168.1.4:61815 → 160.33.32.131:10060; #61
+  GET /WARHAWK_SVML/index.jsp?languageID=1 HTTP/1.0:
+  Host: warhawk-prod3.svo.online.scea.com
+  X-SVOMac: 5f6b2dfa1b6925d560e63dc474072c37
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.1] 192.168.1.4:61815 ← 160.33.32.131:10060; #63
+  HTTP/1.1 302 Moved Temporarily:
+  X-SVOMac: 20ce7791c67520cd079003e2fbee4bf8
+  Server: Apache-Coyote/1.1
+  Set-Cookie: LangID=1; Path=/
+  Location: /WARHAWK_SVML/index1.jsp
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.0] 192.168.1.4:61815 → 160.33.32.131:10060; #71
+  GET /WARHAWK_SVML/index1.jsp? HTTP/1.0:
+  Host: warhawk-prod3.svo.online.scea.com
+  X-SVOMac: 56c67525d379cc3078b6893dd67f4d54
+  Cookie: LangID=1
+  ----------------------------------------------------------------------------------------
+This is where the game starts communicating nonsense on port 10075 (#76)…
+  [TCP: SYN] 192.168.1.4:61817 → 160.33.32.131:10075; length = 0
+  [TCP: SYN, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 0
+  [TCP: ACK] 192.168.1.4:61814 → 160.33.32.131:10075; length = 0
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.1] 192.168.1.4:61815 ← 160.33.32.131:10060; #87
+  HTTP/1.1 200 OK:
+  X-SVOMac: 10564fc1b9de82c30cc3ddd32548be7f
+  Server: Apache-Coyote/1.1
+  Content-Type: text/svml;charset=UTF-8
+  <?xml version="1.0" encoding="UTF-8"?><SVML>…</SVML>
+  ----------------------------------------------------------------------------------------
+  [TCP: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075
+    Data being sent is a SCERT certificate for Warhawk; 733 bytes in length.
+  [TCP: ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 0
+  [TCP: PSH, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075
+    Data being sent is a SCERT certificate; 756 bytes in length.
+
+Additional notes for GAYSSL, the first → packet is EXACTLY the same for when it was doing
+port 10071. The first ← packet is what supports my theory on why the pepper may be related
+to *encrypted data* — it is 71 bytes like on port 10071 and the 8 and 16 bit bytes are the
+same, but the pepper is different and so is the *encrypted data*, it may be related!
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 71
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 71
+
+Unfortantely, on both → and ←, the pepper and *encrypted data* becomes different and not
+duplicates of those on port 10071, even though they are the same size and the 8 bit byte
+is the same to those on port 10071.
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 79
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 10
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 8
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 101
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 9
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 ← 160.33.32.131:10075; length = 23
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 15
+
+This packet's size went from 45 to 49, 8 bit byte is the same, and it is here where this
+port (10075) does different packets and does a slightly longer adventure than port 10071.
+  [GAYSSL: PSH, ACK] 192.168.1.4:61817 → 160.33.32.131:10075; length = 49
+
+I will not document the rest of this port since it's long and it ends in the same way.
+In my packet capture, as soon it does a [FIN, ACK] → :10075 to close off the connection
+(#130), it starts another TCP connection to :10078 (#131), the usual GAYSSL, slightly
+longer certificates on both sides, the same beginning pattern and it is the shortest
+adventure out of all. Though, its adventure may not be complete because I don't see a
+a FIN to close it, meaning I may have not captured that in my packets. Also not
+captured is port :10077 which is open to connections, but I assume it's more or less
+the same shit running GAYSSL. Port :10065 does not run GAYSSL, instead just gives
+you the number 0 in ASCII TCP (NOT HTTP) when viewed in a web browser like Firefox,
+never seen the game use that port, so it may be an entry into the (deep web) the bowels
+of Sony Computer Entertainment of America.
+
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.0] 192.168.1.4:61821 → 160.33.32.131:10060; #184
+  GET /WARHAWK_SVML/stats/Stats_BinaryStatsDownload_Submit.jsp?gameMode=1&accountID=4899895&blobType=351 HTTP/1.0:
+  Host: warhawk-prod3.svo.online.scea.com
+  X-SVOMac: 6effbc38105066d26ae2041915dcf493
+  Cookie:
+    LangID=1; AcctID=4899895; NPCountry=us; ClanID=-1; AuthKeyTime=10-17-2018 15:23:18;
+    NPLang=1; ModerateMode=false; TimeZone=PST; AssocID=0; NPContentRating=318767104;
+    AuthKey=1zTvWxKOqCfC29SGW`rUuU1YFq`RFdNz9LvNIh$Pm4KQsAvrI^A1JfA6nFJHIeCqtX$2v#ohGmJMf~X!UzFIOYKCYF7K&~#k`6dce05t#nDc0ngMUsNv!;
+    AcctName=Jonopiel; OwnerID=-255; Sig=/wmaUhGvH0+pVHGnFtdSeA==
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.1] 192.168.1.4:61821 ← 160.33.32.131:10060; #186
+  HTTP/1.1 302 Moved Temporarily:
+  X-SVOMac: 9d56f2b11e17867add59d480607590ee
+  Location: /WARHAWK_SVML/error/ErrorPage.jsp?statusCode=-608&statusMsg=DATA_NOT_AVAILABLE
+  Content-Disposition: attachment; filename=svoStatsBlob-a4899895-type351.bin
+  Server: Apache-Coyote/1.1
+  Content-Type: application/octet-stream;charset=UTF-8
+  ----------------------------------------------------------------------------------------
+  [DNS] Query Response: commerce.np.ac.playstation.net → 23.203.120.25; #202
+
+ilovesony
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.0] 192.168.1.4:61821 → 160.33.32.131:10060
+  GET /WARHAWK_SVML/ilovesony/legal/UP9000-BCUS98117_00/1 HTTP/1.1
+  Host: warhawk-prod3.svo.online.scea.com:10060
+  User-Agent: PS3Application libhttp/4.7.5-000 (CellOS)
+  Accept-Encoding: identity
+  ----------------------------------------------------------------------------------------
+  [HTTP:1.1] 192.168.1.4:61821 ← 160.33.32.131:10060
+  ETag: W/"731-1232736025000"
+  Last-Modified: Fri, 23 Jan 2009 18:40:25 GMT
+  Server: Apache-Coyote/1.1
+  Content-Length: 731
+  Rated T for Teen.
+  Purchase or use of this item is subject to the PLAYSTATION®Network Terms of Service, this item's use restrictions, and other terms of conditions located at http://www.us.playstation.com/support/useragreements. If you do not wish to accept all these terms, do not purchase or use this item.  One time fee for downloads on up to five activated systems.
+  Video output in HD requires cables and an HD compatible display, both sold separately. This download will play on displays ranging from standard definition to 1080p.  However, this download will output at a maximum resolution of 1080i.  Warhawk is a trademark of Sony Computer Entertainment America Inc. (c) 2007 Sony Computer Entertainment America Inc.
