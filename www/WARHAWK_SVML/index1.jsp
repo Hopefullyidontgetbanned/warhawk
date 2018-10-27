@@ -101,13 +101,13 @@
   <!--Example: POST /WARHAWK_SVML/stats/Stats_CareerLeaderboard.jsp?gameMode=…&start=…&end=…&statsStart=…&statsEnd=…&sortCol=…&sortOrder=…-->
   <DATA dataType="DATA" name="careerLeaderboardURI" value="http://warhawk.gobtron.me:10060/WARHAWK_SVML/stats/Stats_CareerLeaderboard.jsp">
     <ServerParams>
-			<Param name="gameMode" type="integer"/>
-			<Param name="start" type="integer"/>
-			<Param name="end" type="integer"/>
-			<Param name="statsStart" type="integer"/>
-			<Param name="statsEnd" type="integer"/>
-			<Param name="sortCol" type="integer"/>
-			<Param name="sortOrder" type="integer"/>
+      <Param name="gameMode" type="integer"/>
+      <Param name="start" type="integer"/>
+      <Param name="end" type="integer"/>
+      <Param name="statsStart" type="integer"/>
+      <Param name="statsEnd" type="integer"/>
+      <Param name="sortCol" type="integer"/>
+      <Param name="sortOrder" type="integer"/>
     </ServerParams>
   </DATA>
   <DATA dataType="URI" name="PSNGameLongDescriptionURI" value="http://warhawk.gobtron.me:10060/WARHAWK_SVML/ilovesony/"/>
