@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XML>
   <URL_List>
+    <!--NOTICE: This XML file (and this folder as a whole) isn't read by the game AT ALL!!!-->
     <!--Original Warhawk Host: http://warhawk-prod3.svo.online.scea.com:10060/WARHAWK_XML/…-->
     <loginURL>http://warhawk.gobtron.me:10060/WARHAWK_XML/account/Account_Login.jsp</loginURL>
     <loginEncryptedURL>http://warhawk.gobtron.me:10060/WARHAWK_XML/account/Account_Encrypted_Login_Submit.jsp</loginEncryptedURL>
