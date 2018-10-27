@@ -7,4 +7,4 @@ See this [TCP packet analysis on Warhawk for context](https://github.com/JonHype
 **TODO**: Need to somehow decrypt *GAYSSL* to make the game connect at all. The original game servers ran on actual PS3s (about 5 remaining in a cluster before shutdown). It is unclear whether or not the PS3s were running Apache Tomcat but it appears so judging by the timing of the shutdowns.
 
 ## License
-MIT. I did not create any of the games in question nor am I affiliated with any of the developers of these video games or systems. Nothing malicious is intended.
+GPLv3. I did not create any of the games in question nor am I affiliated with any of the developers of these video games or systems. Nothing malicious is intended.
