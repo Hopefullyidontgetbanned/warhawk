@@ -1,0 +1,55 @@
+<svo:exportChildNode node="root" nodeName="TeamTourney_Main" exportName="teamTourneyMain"/>
+<svo:exportChildNode node="root" nodeName="TeamTourneyHome" exportName="teamTourneyHome"/>
+<svo:exportChildNode node="teamTourneyHome" nodeName="matchCreated" exportName="matchCreated"/>
+<svo:exportAttribute node="teamTourneyHome" attributeName="statusName" exportName="statusName"/>
+<svo:exportAttribute node="teamTourneyHome" attributeName="teamTourneyID" exportName="teamTourneyID"/>
+
+    <BUTTON name="create" x="<c:out value=""/>" y="105" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="search"
+        down="active"
+        selectable="default"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourCreateURL"/>">Create Tournament</BUTTON>
+            
+    <BUTTON name="active" x="<c:out value=""/>" y="130" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="create"
+        down="my"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourListURL"/>">Active Tournaments</BUTTON>
+
+    <BUTTON name="my" x="<c:out value=""/>" y="155" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="active"
+        down="archived"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="myTeamTourneysMenuURL"/>">My Tournaments</BUTTON>
+
+    <BUTTON name="archived" x="<c:out value=""/>" y="180" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="my"
+        down="won"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourArchiveListURL"/>">Archived Tournaments</BUTTON>
+
+    <BUTTON name="won" x="<c:out value=""/>" y="205" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="archived"
+        down="rules"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourWonListURL"/>">Tournaments I've Won</BUTTON>
+
+    <BUTTON name="rules" x="<c:out value=""/>" y="230" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="won"
+        down="search"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourRulesURL"/>">Tournament Rules</BUTTON>
+
+    <BUTTON name="search" x="<c:out value=""/>" y="255" width="225" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="rules"
+        down="create"
+        href="<svo:printTextValue node="teamTourneyMain" textNodeName="tourSearchURL"/>">Search Tournaments</BUTTON>
