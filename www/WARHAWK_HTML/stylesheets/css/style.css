@@ -1,0 +1,300 @@
+.topRow
+{
+    BACKGROUND: url(../../images/frame_03.gif)
+}
+.userRow
+{
+    BACKGROUND-COLOR: #6974ab
+}
+.header
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 12pt;
+    COLOR: #184984;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BACKGROUND-COLOR: transparent
+}
+.message
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    COLOR: #FF6600
+}
+.titlebar
+{
+    BACKGROUND-POSITION: 0% 0%;
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    BACKGROUND-ATTACHMENT: scroll;
+    BACKGROUND-IMAGE: url(../../images/titlebar.gif);
+    COLOR: #ffffff;
+    BACKGROUND-REPEAT: repeat-x
+}
+.bottom
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    COLOR: white
+}
+A:hover
+{
+    FONT-WEIGHT: bolder;
+    COLOR: #FF6600;
+    FONT-FAMILY: '@Arial Unicode MS';
+    TEXT-DECORATION: underline
+}
+A.next
+{
+    FONT-SIZE: 10pt;
+    COLOR: white
+}
+.next:hover
+{
+    FONT-SIZE: 10pt;
+    COLOR: #ffc600;
+    TEXT-DECORATION: underline
+}
+.font
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #184984;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+.fontValue
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #184984;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+.font:hover
+{
+    FONT-SIZE: 10pt;
+    COLOR: white;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+TD
+{
+    FONT-SIZE: 10pt;
+    COLOR: #184984;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+A
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #184984;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+.nav
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #FFFFFF;
+    FONT-FAMILY: '@Arial'
+    TEXT-DECORATION: underline
+}
+.nav:hover
+{
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #ffcc00;
+    TEXT-DECORATION: underline
+}
+.topNavLine
+{
+    FONT-SIZE: 3px;
+    Z-INDEX: 2;
+    LEFT: 55px;
+    POSITION: relative;
+    TOP: 70px
+}
+.navTopButton
+{
+}
+.topNav
+{
+    Z-INDEX: 3;
+    LEFT: 170px;
+    FLOAT: none;
+    POSITION: relative;
+    TOP: 83px
+}
+.footer
+{
+    BORDER-RIGHT: #c1c1c1 3px solid;
+    BORDER-TOP: #c1c1c1 3px solid;
+    PADDING-LEFT: 50px;
+    LEFT: 19px;
+    BORDER-LEFT: #c1c1c1 3px solid;
+    BORDER-BOTTOM: #c1c1c1 3px solid;
+    POSITION: relative
+}
+BODY
+{
+    FONT-FAMILY: '@Arial Unicode MS';
+    BACKGROUND-COLOR: white
+}
+TABLE
+{
+    FONT-FAMILY: '@Arial Unicode MS'
+    BACKGROUND-COLOR: white
+}
+.topTABLE
+{
+    FONT-FAMILY: '@Arial Unicode MS'
+    BACKGROUND-COLOR: #DCE7F0
+}
+.submit
+{
+    FONT-WEIGHT: bolder;
+    COLOR: black;
+    BACKGROUND-COLOR: #ffc600
+}
+.swap0
+{
+    BACKGROUND: url(WARHAWK_HTML/images/midspace.html)
+}
+.swap1
+{
+    BACKGROUND-COLOR:#98AFC7
+}
+.mySwap
+{
+    BACKGROUND-COLOR: #184984;
+    COLOR: #FFFFFF;
+    FONT-FAMILY: '@Arial Unicode MS'    
+}
+.myHref
+{
+    FONT-WEIGHT: bolder;
+    COLOR: #FFFFFF;
+    FONT-FAMILY: '@Arial Unicode MS';
+    TEXT-DECORATION: underline
+}
+.myHref.Hover
+{
+    FONT-WEIGHT: bolder;
+    COLOR: #FF6600;
+    FONT-FAMILY: '@Arial Unicode MS';
+    TEXT-DECORATION: underline
+}
+.listBottom
+{
+    BACKGROUND: url(../../images/list_bottom.gif);
+    FLOAT: none;
+    POSITION: static
+}
+TEXTAREA
+{
+    SCROLLBAR-FACE-COLOR: #184984;
+    COLOR: white;
+    SCROLLBAR-ARROW-COLOR: #ffc600;
+    SCROLLBAR-TRACK-COLOR: #ffc600;
+    SCROLLBAR-BASE-COLOR: #184984;
+    BACKGROUND-COLOR: #184984
+}
+.yellow
+{
+    FONT-SIZE: 10pt;
+    COLOR: #ffc600;
+    FONT-FAMILY: '@Arial Unicode MS'
+}
+INPUT
+{
+    FONT-SIZE: 10pt;
+    COLOR: white;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BACKGROUND-COLOR: #184984
+}
+
+SELECT
+{
+    FONT-SIZE: 10pt;
+    COLOR: white;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BACKGROUND-COLOR: #184984
+}
+.bottomTable
+{
+    BORDER-RIGHT: #ffcc00 2px solid;
+    BORDER-TOP: #ffcc00 2px solid;
+    BORDER-LEFT: #ffcc00 2px solid;
+    BORDER-BOTTOM: #ffcc00 2px solid
+}
+.radioButton
+{
+    BACKGROUND-COLOR: transparent
+}
+.popUp
+{
+    BACKGROUND-COLOR: #7498c0
+}
+.ladderLinks
+{
+    
+    VISIBILITY: hidden;
+    TOP: 215px;
+    LEFT: 450px;
+    POSITION: absolute;
+    WIDTH: 320px;
+
+
+}
+.statTable
+{
+    BORDER-RIGHT: #184984 1px solid;
+    BORDER-LEFT: #184984 1px solid;
+    BORDER-TOP: #184984 1px solid;
+    BORDER-BOTTOM: #184984 1px solid;
+    BACKGROUND-COLOR: #98AFC7;
+}
+.statCell
+{   
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BORDER-BOTTOM: #184984 1px solid;  
+    BACKGROUND-COLOR: #98AFC7;
+}
+.statHeader
+{       
+    BORDER-BOTTOM: #184984 1px solid;
+    BACKGROUND-COLOR: #ffcc00;
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 10pt;
+    COLOR: #184984;      
+}  
+.myStatCell
+{   
+    FONT-SIZE: 10pt;
+    BORDER-BOTTOM: #184984 1px solid;  
+    BACKGROUND-COLOR: #184984;
+    COLOR: #FFFFFF;
+    FONT-FAMILY: '@Arial Unicode MS'
+}  
+.statSwap0
+{   
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BORDER-BOTTOM: #184984 1px solid;
+    BACKGROUND: url(../../images/midspace.gif)
+}
+.statSwap1
+{   
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: '@Arial Unicode MS';
+    BORDER-BOTTOM: #184984 1px solid; 
+    BACKGROUND-COLOR: #98AFC7;
+}
+.statsMessage
+{
+    BORDER-BOTTOM: #184984 1px solid; 
+    FONT-FAMILY: '@Arial Unicode MS';s
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    COLOR: #FF6600
+}
+
+
+
