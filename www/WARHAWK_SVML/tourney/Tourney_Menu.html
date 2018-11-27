@@ -1,0 +1,137 @@
+<svo:exportChildNode node="root" nodeName="Tourney" exportName="tourney"/> 
+<svo:exportAttribute node="tourney" attributeName="status" exportName="status"/>
+
+<svo:exportChildNode node="root" nodeName="Tourney_Main" exportName="tourneyMain"/> 
+
+    <BUTTON name="active" x="<c:out value=""/>" y="130" width="220" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="create"
+        down="rankings"
+        href="<svo:printTextValue node="tourneyMain" textNodeName="tourListURL"/>">Active Tournaments</BUTTON>
+
+    <BUTTON name="rankings" x="<c:out value=""/>" y="150" width="220" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="active"
+        down="archived"
+        href="<svo:printTextValue node="tourneyMain" textNodeName="tourLeaderboardURL"/>">Tournament Rankings</BUTTON>          
+       
+    <BUTTON name="archived" x="<c:out value=""/>" y="170" width="220" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="rankings"
+        down="won"
+        href="<svo:printTextValue node="tourneyMain" textNodeName="tourArchiveListURL"/>">Archived Tournaments</BUTTON>
+       
+    <BUTTON name="won" x="<c:out value=""/>" y="190" width="220" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="archived"
+        down="rules"
+        href="<svo:printTextValue node="tourneyMain" textNodeName="tourWonListURL"/>">Tournaments I've Won</BUTTON>
+       
+
+    <BUTTON name="rules" x="<c:out value=""/>" y="210" width="220" height="20" fontSize="15"
+        align="left"
+        class="BUTTON1"
+        up="won"
+        down="search"
+        href="<svo:printTextValue node="tourneyMain" textNodeName="tourRulesURL"/>">Tournament Rules</BUTTON>
+
+    <c:choose>
+    <c:when test="false">
+        <c:choose>
+            <c:when test="false">
+
+                <BUTTON name="create" x="<c:out value=""/>" y="110" width="220" height="20" fontSize="15"
+                    align="left"
+                    class="BUTTON1"
+                    up="room"  
+                    down="active"
+                    selectable="default"
+                    href="<svo:printTextValue node="tourneyMain" textNodeName="tourCreateURL"/>">Create Tournament</BUTTON>
+                
+                            
+                <BUTTON name="search" x="<c:out value=""/>" y="230" width="220" height="20" fontSize="15"
+                    align="left"
+                    class="BUTTON1"
+                    up="rules"
+                    down="bracket"
+                    href="<svo:printTextValue node="tourneyMain" textNodeName="tourSearchURL"/>">Search Tournaments</BUTTON>
+    
+                <BUTTON name="bracket" x="<c:out value=""/>" y="250" width="220" height="20" fontSize="15"
+                    align="center"
+                    class="BUTTON1"
+                    selectable="true"
+                    up="search"
+                    down="room"
+                    href="<svo:printTextValue node="tourney" textNodeName="bracketURL"/>">Bracket</BUTTON>
+    
+                <BUTTON name="room" x="<c:out value=""/>" y="270" width="220" height="20" fontSize="15"
+                    align="center"
+                    class="BUTTON1"
+                    selectable="true"
+                    up="bracket"
+                    down="create"
+                    href="<svo:printTextValue node="tourney" textNodeName="gameRoomURL"/>">Game Room</BUTTON>
+    
+            </c:when>
+            <c:otherwise>
+    
+                <BUTTON name="create" x="<c:out value=""/>" y="110" width="220" height="20" fontSize="15"
+                    align="left"
+                    class="BUTTON1"
+                    up="search"  
+                    down="active"
+                    selectable="default"
+                    href="<svo:printTextValue node="tourneyMain" textNodeName="tourCreateURL"/>">Create Tournament</BUTTON>
+                
+                <BUTTON name="search" x="<c:out value=""/>" y="230" width="220" height="20" fontSize="15"
+                    align="left"
+                    class="BUTTON1"
+                    up="rules"
+                    down="create"
+                    href="<svo:printTextValue node="tourneyMain" textNodeName="tourSearchURL"/>">Search Tournaments</BUTTON>
+    
+                <BUTTON name="bracket" x="<c:out value=""/>" y="250" width="220" height="20" fontSize="15"
+                    align="center"
+                    class="BUTTON1"
+                    selectable="false"
+                    up="search"
+                    down="room"
+                    href="<svo:printTextValue node="tourney" textNodeName="bracketURL"/>">Bracket</BUTTON>
+    
+                <BUTTON name="room" x="<c:out value=""/>" y="270" width="220" height="20" fontSize="15"
+                    align="center"
+                    class="BUTTON1"
+                    selectable="false"
+                    up="bracket"
+                    down="create"
+                    href="<svo:printTextValue node="tourney" textNodeName="gameRoomURL"/>">Game Room</BUTTON>
+    
+            </c:otherwise>
+    
+        </c:choose>
+    </c:when>
+    <c:otherwise>
+
+        <BUTTON name="create" x="<c:out value=""/>" y="110" width="220" height="20" fontSize="15"
+            align="left"
+            class="BUTTON1"
+            up="search"  
+            down="active"
+            selectable="default"
+            href="<svo:printTextValue node="tourneyMain" textNodeName="tourCreateURL"/>">Create Tournament</BUTTON>
+        
+        <BUTTON name="search" x="<c:out value=""/>" y="230" width="220" height="20" fontSize="15"
+            align="left"
+            class="BUTTON1"
+            up="rules"
+            down="create"
+            href="<svo:printTextValue node="tourneyMain" textNodeName="tourSearchURL"/>">Search Tournaments</BUTTON>
+
+    </c:otherwise>
+
+    </c:choose>
+    
